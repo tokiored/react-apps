@@ -1,26 +1,13 @@
-# react-app Repository
+# Getting Started with Vite
 
-This repository contains multiple React applications, each maintained on its **own branch**.  
-The `main` branch serves as an overview and index of all available apps.
+# Description
 
----
+Van hosting SPA website with firebase integration
 
-## 📂 Branches & Apps
+## Running the appliction
 
-| Branch       | App Name    | Description                                                                      |
-| ------------ | ----------- | -------------------------------------------------------------------------------- |
-| `memory-app` | Memory Game | Challenge your brain by finding matching cards in this interactive memory game." |
+### `npm start`
 
----
+### `npm build`
 
-## ⚡ Getting Started
-
-To work with a specific app, checkout its branch:
-
-```bash
-git clone https://github.com/tokiored/react-app.git
-cd react-apps
-git checkout <branch-name>  # e.g., memory-game
-npm install
-npm start
-```
+### `npm preview`
