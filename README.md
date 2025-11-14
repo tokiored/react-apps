@@ -1,26 +1,30 @@
-# react-app Repository
+# Getting Started with Create React App
 
-This repository contains multiple React applications, each maintained on its **own branch**.  
-The `main` branch serves as an overview and index of all available apps.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
----
+## Available Scripts
 
-## 📂 Branches & Apps
+In the project directory, you can run:
 
-| Branch       | App Name    | Description                                                                      |
-| ------------ | ----------- | -------------------------------------------------------------------------------- |
-| `memory-app` | Memory Game | Challenge your brain by finding matching cards in this interactive memory game." |
+### `npm start`
 
----
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## ⚡ Getting Started
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-To work with a specific app, checkout its branch:
+### `npm test`
 
-```bash
-git clone https://github.com/tokiored/react-app.git
-cd react-apps
-git checkout <branch-name>  # e.g., memory-game
-npm install
-npm start
-```
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
