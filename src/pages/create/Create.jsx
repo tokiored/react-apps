@@ -1,6 +1,8 @@
-import { useEffect, useRef, useState } from 'react'
-import { useFetch } from '../../hooks/useFetch'
+import { useRef, useState } from 'react'
 import { useHistory } from 'react-router-dom'
+
+import { collection, addDoc } from 'firebase/firestore/lite'
+import { db } from '../../firebase/firebase'
 
 import './create.css'
 
@@ -11,24 +13,34 @@ export default function Create() {
     const [cookingTime, setCookingTime] = useState('')
     const [method, setMethod] = useState('')
 
+    const [isPending, setIsPending] = useState(false)
+    const [error, setError] = useState(null)
+
     const [ingredient, setIngredient] = useState('')
     const [ingredients, setIngredients] = useState([])
     const ingredientInput = useRef()
 
-    const { post, data, isPending, error } = useFetch(
-        'http://localhost:8000/recipes',
-        'POST'
-    )
     // handle the form submit
     const handleSubmit = async (e) => {
         e.preventDefault()
-        post({
-            title,
-            ingredients,
-            method,
-            cookingTime: cookingTime + ' minutes',
-        })
+        try {
+            setIsPending(true)
+            const doc = {
+                title,
+                ingredients,
+                method,
+                cookingTime: cookingTime + ' minutes',
+            }
+            const res = collection(db, 'recipes')
+            await addDoc(res, doc)
+            history.push('/')
+        } catch (error) {
+            setError(error.message)
+        } finally {
+            setIsPending(false)
+        }
     }
+
     // add ingredient to ingredients
     const addIngredient = (e) => {
         e.preventDefault()
@@ -40,10 +52,6 @@ export default function Create() {
             ingredientInput.current.focus()
         }
     }
-    // redirect the user once data `success` is returned from POST
-    useEffect(() => {
-        if (data) history.push('/')
-    }, [data, history])
 
     return (
         <div className="create">
@@ -101,11 +109,11 @@ export default function Create() {
                     />
                 </label>
                 <button disabled={isPending} className="btn">
-                    {isPending && 'Submittinng...'}
+                    {isPending && 'Submiting...'}
                     {!isPending && 'Submit'}
                 </button>
             </form>
-            {error && <div className="error">{error.message}</div>}
+            {error && <div className="error">{error}</div>}
         </div>
     )
 }

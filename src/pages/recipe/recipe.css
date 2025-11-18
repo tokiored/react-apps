@@ -27,3 +27,11 @@
     text-align: left;
     line-height: 1.5em;
 }
+.dark .recipe {
+    background: darkslateblue;
+}
+
+.dark p,
+.dark .recipe li {
+    color: #fff;
+}
