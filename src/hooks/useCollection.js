@@ -22,7 +22,7 @@ export const useCollection = (resource, _query, _order) => {
     const q = useRef(_query).current
     const order = useRef(_order).current
 
-    console.log('order', order)
+    console.log('_query', _query)
 
     useEffect(() => {
         setIsPending(true)
